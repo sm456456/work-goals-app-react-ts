@@ -1,11 +1,15 @@
-import WorkGoal from "./components/WorkGoal.tsx";
+import Header from './components/Header.tsx';
+import WorkGoal from './components/WorkGoal.tsx';
 
 export default function App() {
-  return (
-    <main>
-      <WorkGoal title="Work Goals">
-        <p>My top goals</p>
-      </WorkGoal>
-    </main>
-  );
+    return (
+        <main>
+            <Header image={{ src: 'goals.png', alt:"goals" }}>
+                <h1>My Goals</h1>
+            </Header>
+            <WorkGoal title="Work Goals">
+                <p>first paragraph</p>
+            </WorkGoal>
+        </main>
+    );
 }
