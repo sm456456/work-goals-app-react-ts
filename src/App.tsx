@@ -1,24 +1,24 @@
 import { useState } from 'react';
 import Header from './components/Header.tsx';
 import WorkGoalList from './components/WorkGoalList.tsx';
+import NewGoal from './components/NewGoal.tsx';
 
-type WorkGoal = {
+export type WorkGoalType = {
   id: number;
   title: string;
   description: string;
 }
 
 export default function App() {
-  const [goals, setGoals] = useState<WorkGoal[]>([]);
+  const [goals, setGoals] = useState<WorkGoalType[]>([]);
 
-  function handleAddGoal() {
+  function handleAddGoal(goal: string, summary: string) {
     setGoals(prevGoals => {
-      const newGoal: WorkGoal = {
+      const newGoal: WorkGoalType = {
         id: Math.random(),
-        title: 'Learn Typescript',
-        description: 'Learn how to use typescript with react',
+        title: goal,
+        description: summary,
       };
-
       return [
         ...prevGoals,
         newGoal
@@ -26,13 +26,17 @@ export default function App() {
     })
   }
 
+  function handleDeleteGoal(id: number) {
+    setGoals(prevGoals => prevGoals.filter(goal => goal.id !== id));
+  }
+
     return (
         <main>
             <Header image={{ src: 'goals.png', alt:"goals" }}>
                 <h1>Work Goals</h1>
             </Header>
-            <button onClick={handleAddGoal}>Add goal</button>
-            <WorkGoalList goals={goals} />
+            <NewGoal onAddGoal={handleAddGoal}/>
+            <WorkGoalList goals={goals} onDeleteGoal={handleDeleteGoal} />
         </main>
     );
 }

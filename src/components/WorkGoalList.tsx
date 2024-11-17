@@ -1,15 +1,17 @@
 import WorkGoal from './WorkGoal';
+import { type WorkGoalType } from '../App';
 
 type WorkGoalListProps = {
-    goals: { id: number; title: string; description: string }[];
+    goals: WorkGoalType[];
+    onDeleteGoal: (id: number) => void;
 };
 
-export default function WorkGoalList({ goals }: WorkGoalListProps) {
+export default function WorkGoalList({ goals, onDeleteGoal }: WorkGoalListProps) {
     return (
         <ul>
             {goals.map(goal => (
                 <li key={goal.id}>
-                    <WorkGoal title={goal.title}>
+                    <WorkGoal id={goal.id} title={goal.title} onDelete={onDeleteGoal}>
                         <p>{goal.description}</p>
                     </WorkGoal>
                 </li>

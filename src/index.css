@@ -61,12 +61,13 @@ input {
   border-radius: 4px;
 }
 
-form button {
+button {
   display: block;
-  width: 100%;
+  /* width: 100%; */
   padding: 0.75rem;
   margin-top: 1rem;
-  background-color: #f7e596;
+  margin-bottom: 1rem;
+  background-color: #eadda3;
   border: none;
   border-radius: 4px;
   font: inherit;

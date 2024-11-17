@@ -1,20 +1,24 @@
-import { type PropsWithChildren } from "react";
+import { type PropsWithChildren } from 'react';
 
-type WorkGoalProps = PropsWithChildren<{title: string}>
-// it the same as:
-// type WorkGoalProps = {
-//   title: string;
-//   children: ReactNode;
-// };
+type WorkGoalProps = PropsWithChildren<{
+    id: number;
+    title: string;
+    onDelete: (id: number) => void;
+}>;
 
-export default function WorkGoal({ title, children }: WorkGoalProps) {
-  return (
-    <article>
-      <div>
-        <h2>{title}</h2>
-        {children}
-      </div>
-      <button>Delete</button>
-    </article>
-  );
+export default function WorkGoal({
+    id,
+    title,
+    onDelete,
+    children,
+}: WorkGoalProps) {
+    return (
+        <article>
+            <div>
+                <h2>{title}</h2>
+                {children}
+            </div>
+            <button onClick={() => onDelete(id)}>Delete</button>
+        </article>
+    );
 }
