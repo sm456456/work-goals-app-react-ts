@@ -1,1 +1,1 @@
-# work-goals-app-react-ts
+Add your work goals and keep track of them.
